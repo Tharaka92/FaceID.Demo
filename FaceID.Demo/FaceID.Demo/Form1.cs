@@ -38,10 +38,15 @@ namespace FaceID.Demo
             face = new HaarCascade("haarcascade_frontalface_default.xml");
             try
             {
-                //if (!Directory.Exists(Application.StartupPath + "/Faces"))
-                //{
-                //    Directory.CreateDirectory(Application.StartupPath + "/Faces");
-                //}
+                if (!Directory.Exists(Application.StartupPath + "/Faces"))
+                {
+                    Directory.CreateDirectory(Application.StartupPath + "/Faces");
+                }
+
+                if (!File.Exists(Application.StartupPath + "/Faces/TrainedLabels.txt"))
+                {
+                    File.CreateText(Application.StartupPath + "/Faces/TrainedLabels.txt");
+                }
 
                 string Labelsinfo = File.ReadAllText(Application.StartupPath + "/Faces/TrainedLabels.txt");
                 string[] Labels = Labelsinfo.Split('%');
