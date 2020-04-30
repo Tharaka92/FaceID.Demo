@@ -71,9 +71,13 @@ namespace FaceID.Demo.Windows.Azure
 
         private async void registerBtn_Click(object sender, EventArgs e)
         {
+            statusLbl.ForeColor = Color.Blue;
+            statusLbl.Text = "Processing....";
             try
             {
                 await FaceService.CreatePersonAsync(nameTxt.Text, string.Empty, GetImage(bitmap));
+                statusLbl.ForeColor = Color.Green;
+                statusLbl.Text = "Registered";
                 MessageBox.Show("Registration Successful.", "Success");
             }
             catch (Exception ex)
@@ -99,6 +103,8 @@ namespace FaceID.Demo.Windows.Azure
 
         private async void loginbtn_Click(object sender, EventArgs e)
         {
+            statusLbl.ForeColor = Color.Blue;
+            statusLbl.Text = "Processing....";
             try
             {
                 var reconizedUsers = await FaceService.RecognizeAsync(GetImage(bitmap));
@@ -106,7 +112,7 @@ namespace FaceID.Demo.Windows.Azure
                 {
                     isAuthorized = true;
                     statusLbl.ForeColor = Color.Green;
-                    statusLbl.Text = reconizedUsers[0].Name + " AUTHORIZED.";
+                    statusLbl.Text = "AUTHORIZED - " + reconizedUsers[0].Name;
                 }
                 else
                 {
