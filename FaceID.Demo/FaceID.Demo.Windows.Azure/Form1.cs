@@ -152,5 +152,12 @@ namespace FaceID.Demo.Windows.Azure
             }
             pic.Image = bitmap;
         }
+
+        private void deviceCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            device = new VideoCaptureDevice(filter[deviceCmb.SelectedIndex].MonikerString);
+            device.NewFrame += Device_NewFrame;
+            device.Start();
+        }
     }
 }

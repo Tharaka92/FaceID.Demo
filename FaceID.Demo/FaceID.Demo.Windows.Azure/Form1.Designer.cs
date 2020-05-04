@@ -53,6 +53,7 @@
             this.deviceCmb.Name = "deviceCmb";
             this.deviceCmb.Size = new System.Drawing.Size(229, 21);
             this.deviceCmb.TabIndex = 1;
+            this.deviceCmb.SelectedIndexChanged += new System.EventHandler(this.deviceCmb_SelectedIndexChanged);
             // 
             // nameTxt
             // 
