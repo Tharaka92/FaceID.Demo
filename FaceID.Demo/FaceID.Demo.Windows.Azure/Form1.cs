@@ -41,9 +41,9 @@ namespace FaceID.Demo.Windows.Azure
 
             device = new VideoCaptureDevice();
 
-            device = new VideoCaptureDevice(filter[deviceCmb.SelectedIndex].MonikerString);
-            device.NewFrame += Device_NewFrame;
-            device.Start();
+            //device = new VideoCaptureDevice(filter[deviceCmb.SelectedIndex].MonikerString);
+            //device.NewFrame += Device_NewFrame;
+            //device.Start();
         }
 
         private void Device_NewFrame(object sender, NewFrameEventArgs eventArgs)
@@ -155,6 +155,7 @@ namespace FaceID.Demo.Windows.Azure
 
         private void deviceCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
+            device = new VideoCaptureDevice();
             device = new VideoCaptureDevice(filter[deviceCmb.SelectedIndex].MonikerString);
             device.NewFrame += Device_NewFrame;
             device.Start();
