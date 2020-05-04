@@ -38,12 +38,6 @@ namespace FaceID.Demo.Windows.Azure
             foreach (FilterInfo device in filter)
                 deviceCmb.Items.Add(device.Name);
             deviceCmb.SelectedIndex = 0;
-
-            device = new VideoCaptureDevice();
-
-            //device = new VideoCaptureDevice(filter[deviceCmb.SelectedIndex].MonikerString);
-            //device.NewFrame += Device_NewFrame;
-            //device.Start();
         }
 
         private void Device_NewFrame(object sender, NewFrameEventArgs eventArgs)
@@ -157,7 +151,8 @@ namespace FaceID.Demo.Windows.Azure
         {
             device = new VideoCaptureDevice();
             device = new VideoCaptureDevice(filter[deviceCmb.SelectedIndex].MonikerString);
-            device.NewFrame += Device_NewFrame;
+            device.VideoResolution = device.VideoCapabilities[2];
+            device.NewFrame += new NewFrameEventHandler(Device_NewFrame);
             device.Start();
         }
     }
